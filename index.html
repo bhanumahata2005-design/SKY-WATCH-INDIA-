@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sky Watch India – meteor showers, supermoons & dark-sky spots</title>
+<meta name="description" content="What's happening in India's night sky: meteor showers, supermoons, moon phases and the best dark-sky spots.">
+<meta property="og:title" content="Sky Watch India">
+<meta property="og:description" content="Look up, India. Your guide to tonight's sky and what's coming next.">
+<meta name="theme-color" content="#15123B">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{background:#0E0B2E;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--night:#15123B;--deep:#0E0B2E;--violet:#7B5CFF;--saffron:#FF9A3C;--pink:#FF5C93;--ink:#F6F1FF;--mute:#B9B0DC;--panel:#221D5A;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font:400 1.05rem/1.6 "DM Sans",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--deep),var(--night) 45%,#2A1B5E);min-height:100vh}
+h1,h2,h3,.logo,.big,.ev b{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.05}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
+.wrap{max-width:1040px;margin:auto;padding:0 20px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;backdrop-filter:blur(12px);background:#0e0b2ecc}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:1.2rem;text-decoration:none}
+nav a{margin-left:18px;text-decoration:none;color:var(--mute);font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{position:relative;overflow:hidden;padding:72px 0 88px}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 20% 30%,#7B5CFF77,transparent 40%),radial-gradient(circle at 80% 20%,#FF5C9360,transparent 38%),radial-gradient(circle at 60% 90%,#FF9A3C50,transparent 40%);filter:blur(30px)}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;display:grid;gap:40px;grid-template-columns:1.2fr .8fr;align-items:center}
+h1{font-size:clamp(3.2rem,10vw,7rem);font-weight:800;line-height:.95}
+.lead{font-size:1.25rem;color:var(--mute);max-width:34ch;margin:22px 0}
+.btn{display:inline-block;padding:14px 26px;margin:0 12px 12px 0;border-radius:99px;font-weight:700;text-decoration:none;background:var(--saffron);color:#1a1033}
+.btn.alt{background:transparent;border:2px solid var(--violet);color:var(--ink)}
+.btn:hover{background:var(--pink);border-color:var(--pink);color:#1a1033}
+.hint{color:var(--mute);font-size:.9rem}
+.tonight{background:#ffffff14;border:1px solid #ffffff2b;border-radius:32px;padding:28px;text-align:center;backdrop-filter:blur(10px)}
+.tonight svg{width:170px;height:170px;filter:drop-shadow(0 0 36px #ffd98a77)}
+.big{font-size:1.9rem;font-weight:800;margin-top:14px}
+.next{margin-top:14px;padding-top:14px;border-top:1px dashed #ffffff40;color:var(--saffron);font-weight:700}
+section{padding:72px 0}
+h2{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800;margin-bottom:10px}
+.sub{color:var(--mute);max-width:56ch;margin-bottom:22px}
+.chips button{font:inherit;font-weight:700;color:var(--ink);background:transparent;border:2px solid #ffffff33;border-radius:99px;padding:8px 18px;margin:0 8px 8px 0;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--violet);border-color:var(--violet)}
+.ev{display:grid;grid-template-columns:92px 1fr;gap:18px;align-items:center;padding:20px 22px;margin-top:14px;border-radius:24px 8px 24px 8px;background:var(--panel);border-left:6px solid var(--c)}
+.ev time{text-align:center}
+.ev b{display:block;font-size:2.8rem;font-weight:800}
+.ev small{color:var(--mute)}
+.ev h3{font-size:1.5rem;margin-bottom:4px}
+.ev .when{color:var(--c);font-weight:700;margin-top:6px}
+.share{font:inherit;font-weight:700;color:var(--ink);background:transparent;border:2px solid #ffffff40;border-radius:99px;padding:6px 16px;margin-top:12px;cursor:pointer}
+.share:hover{border-color:var(--saffron)}
+.empty{color:var(--mute);margin-top:18px}
+.moonbox{display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:center}
+label{display:block;font-weight:700;margin-bottom:6px}
+input[type=date]{font:inherit;color:var(--ink);background:var(--panel);border:2px solid var(--violet);border-radius:14px;padding:12px 16px}
+.spots{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.spots article{padding:24px;border-radius:28px 8px 28px 8px;background:linear-gradient(160deg,var(--panel),#3a2a86)}
+.spots article:nth-child(even){border-radius:8px 28px 8px 28px}
+.spots h3{font-size:1.4rem;margin-bottom:8px}
+.spots p{color:var(--mute)}
+.tips{list-style:none;padding:0;display:grid;gap:14px}
+.tips li{font-size:1.15rem;padding:18px 22px;border-radius:20px;background:#ffffff10;border-left:6px solid var(--pink)}
+.tips li:nth-child(even){border-color:var(--saffron)}
+footer{padding:40px 0 56px;color:var(--mute);font-size:.95rem}
+footer p+p{margin-top:8px}
+@media(max-width:760px){.hero .wrap,.moonbox{grid-template-columns:1fr}.hero{padding-top:48px}nav a{margin-left:12px}.ev{grid-template-columns:70px 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top">Sky Watch India</a>
+  <nav aria-label="Main"><a href="#events">Events</a><a href="#moon">Moon</a><a href="#spots">Spots</a><a href="#tips">Tips</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <h1>Look up, India.</h1>
+      <p class="lead">Meteor showers, supermoons and the darkest skies in the country. No telescope needed, just step away from the city lights.</p>
+      <p class="cta"><a class="btn" href="#events">See what's next</a><a class="btn alt" href="#spots">Find dark skies</a></p>
+      <p class="hint">Tap anywhere on the sky to make a shooting star.</p>
+    </div>
+    <div class="tonight" aria-live="polite">
+      <div id="tonightMoon"></div>
+      <p class="big" id="tonightName">Tonight's moon</p>
+      <p id="tonightLit"></p>
+      <p class="next" id="nextUp"></p>
+    </div>
+  </div>
+</section>
+
+<section id="events"><div class="wrap">
+  <h2>Coming up</h2>
+  <p class="sub">Dates are in IST. Peaks can shift by a night, so check again a few days before.</p>
+  <div class="chips" role="group" aria-label="Filter events">
+    <button data-f="all" aria-pressed="true">All</button>
+    <button data-f="meteor" aria-pressed="false">Meteor showers</button>
+    <button data-f="moon" aria-pressed="false">Moon</button>
+  </div>
+  <div id="eventList"></div>
+</div></section>
+
+<section id="moon"><div class="wrap moonbox">
+  <div>
+    <h2>Moon on any date</h2>
+    <p class="sub">Planning a trip or a night shoot? Pick a date and see the moon.</p>
+    <label for="moonDate">Date</label>
+    <input type="date" id="moonDate">
+  </div>
+  <div class="tonight"><div id="pickMoon"></div><p class="big" id="pickName"></p><p id="pickLit"></p></div>
+</div></section>
+
+<section id="spots"><div class="wrap">
+  <h2>Where the sky actually goes dark</h2>
+  <p class="sub">Winter (Oct to Mar) usually means clearer skies. Check road and weather conditions before heading to the mountains.</p>
+  <div class="spots">
+    <article><h3>Hanle, Ladakh</h3><p>India's first Dark Sky Reserve, at around 4,500 m. Home to an astronomical observatory. Pack serious warm layers.</p></article>
+    <article><h3>Kibber, Spiti</h3><p>A high-altitude village in Himachal with almost no light pollution and a huge open horizon.</p></article>
+    <article><h3>Rann of Kutch, Gujarat</h3><p>Flat white salt desert, so you get sky from edge to edge. Easy to combine with a winter trip.</p></article>
+    <article><h3>Thar, Rajasthan</h3><p>Dunes near Jaisalmer are far from big cities and dry, so skies are often crisp.</p></article>
+  </div>
+</div></section>
+
+<section id="tips"><div class="wrap">
+  <h2>First time? Start here</h2>
+  <ul class="tips">
+    <li><b>Get 20 km from city lights.</b> Even a village rooftop beats a metro balcony.</li>
+    <li><b>Give your eyes 20 minutes.</b> Dim your phone or use night mode, bright screens reset your night vision.</li>
+    <li><b>Skip the telescope.</b> Your eyes plus a free app like Stellarium Web is plenty. Binoculars are a bonus.</li>
+    <li><b>For meteors, lie flat.</b> Look at the wide sky, not one spot, and bring a mat and a flask of chai.</li>
+  </ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>Sky Watch India. Event dates are approximate, so confirm with a planetarium or astronomy club near you.</p>
+  <p><a href="https://github.com/">Open source on GitHub</a></p>
+</div></footer>
+<script>
+// ===== Edit this list to add or change events (dates are IST, YYYY-MM-DD) =====
+const EVENTS = [
+  {d:"2026-10-21", t:"meteor", n:"Orionid meteor shower", s:"Dust from Halley's Comet. Up to about 20 meteors an hour at peak.", r:"Best 3 to 5 AM, look east"},
+  {d:"2026-11-17", t:"meteor", n:"Leonid meteor shower", s:"Fast, bright streaks from Comet Tempel-Tuttle. Usually about 15 an hour.", r:"Best after midnight, look east"},
+  {d:"2026-11-24", t:"moon",   n:"Supermoon (full moon)", s:"A full moon near its closest point to Earth, so it looks a little bigger and brighter.", r:"Moonrise at sunset, look east"},
+  {d:"2026-12-13", t:"meteor", n:"Geminid meteor shower", s:"The year's best shower. Moon is out of the way, so skies should be dark.", r:"Best 10 PM to 2 AM, look up and east"},
+  {d:"2026-12-24", t:"moon",   n:"Supermoon (full moon)", s:"Another close full moon to end the year.", r:"Moonrise at sunset, look east"},
+  {d:"2027-01-03", t:"meteor", n:"Quadrantid meteor shower", s:"Short, sharp peak lasting only a few hours. Can be intense if the timing works.", r:"Best before dawn, look north-east"}
+];
+
+const $ = s => document.querySelector(s);
+const IST = d => new Date(d + "T00:00:00+05:30");
+
+// ===== Moon phase =====
+const SYN = 29.530588853, REF = Date.UTC(2000, 0, 6, 18, 14);
+const phase = ms => (((ms - REF) / 864e5 % SYN) + SYN) % SYN / SYN;
+const NAMES = ["New moon","Waxing crescent","First quarter","Waxing gibbous","Full moon","Waning gibbous","Last quarter","Waning crescent"];
+function moonSVG(p) {
+  const k = Math.cos(2 * Math.PI * p), rx = Math.abs(k) * 50, sw = k > 0 ? 0 : 1;
+  const flip = p > 0.5 ? 'transform="translate(100 0) scale(-1 1)"' : "";
+  return `<svg viewBox="0 0 100 100" role="img" aria-label="Moon phase"><circle cx="50" cy="50" r="50" fill="#2a2563"/><path ${flip} d="M50 0A50 50 0 0 1 50 100A${rx} 50 0 0 ${sw} 50 0Z" fill="#FFE9B8"/></svg>`;
+}
+function showMoon(date, box, nameEl, litEl) {
+  const p = phase(date.getTime());
+  $(box).innerHTML = moonSVG(p);
+  $(nameEl).textContent = NAMES[Math.round(p * 8) % 8];
+  $(litEl).textContent = Math.round((1 - Math.cos(2 * Math.PI * p)) / 2 * 100) + "% lit";
+}
+showMoon(new Date(), "#tonightMoon", "#tonightName", "#tonightLit");
+const di = $("#moonDate");
+di.value = new Date().toLocaleDateString("en-CA");
+const pick = () => di.value && showMoon(new Date(di.value + "T12:00:00"), "#pickMoon", "#pickName", "#pickLit");
+di.addEventListener("input", pick); pick();
+
+// ===== Events =====
+const now = Date.now();
+const upcoming = EVENTS.filter(e => IST(e.d).getTime() + 864e5 >= now);
+if (upcoming[0]) {
+  const days = Math.ceil((IST(upcoming[0].d) - now) / 864e5);
+  $("#nextUp").textContent = days <= 0 ? `${upcoming[0].n}: tonight!` : `${upcoming[0].n} in ${days} day${days > 1 ? "s" : ""}`;
+}
+function render(f) {
+  const list = upcoming.filter(e => f === "all" || e.t === f);
+  $("#eventList").innerHTML = list.length ? list.map(e => {
+    const dt = IST(e.d), o = {timeZone: "Asia/Kolkata"};
+    const day = dt.toLocaleDateString("en-IN", {...o, day: "numeric"});
+    const mon = dt.toLocaleDateString("en-IN", {...o, month: "short", year: "numeric"});
+    return `<article class="ev" style="--c:var(--${e.t === "meteor" ? "violet" : "saffron"})"><time datetime="${e.d}"><b>${day}</b><small>${mon}</small></time><div><h3>${e.n}</h3><p>${e.s}</p><p class="when">${e.r}</p><button class="share" data-share="${e.n}, ${day} ${mon}. ${e.r}. via Sky Watch India">Share</button></div></article>`;
+  }).join("") : '<p class="empty">Nothing in this list right now. Check back soon.</p>';
+}
+document.querySelectorAll(".chips button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".chips button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render(b.dataset.f);
+}));
+render("all");
+
+$("#eventList").addEventListener("click", async e => {
+  const b = e.target.closest(".share"); if (!b) return;
+  try {
+    if (navigator.share) await navigator.share({title: "Sky Watch India", text: b.dataset.share});
+    else { await navigator.clipboard.writeText(b.dataset.share); b.textContent = "Copied"; setTimeout(() => b.textContent = "Share", 1500); }
+  } catch (_) {}
+});
+
+// ===== Starfield + tap-for-shooting-star =====
+const hero = $(".hero"), c = $("#sky"), g = c.getContext("2d");
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W, H, stars = [], shots = [];
+function size() {
+  W = c.width = hero.offsetWidth; H = c.height = hero.offsetHeight;
+  stars = Array.from({length: Math.min(200, Math.floor(W / 6))}, () => ({x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3, p: Math.random() * 6.28, s: Math.random() * .02 + .005}));
+}
+function draw() {
+  g.clearRect(0, 0, W, H); g.fillStyle = "#fff";
+  for (const s of stars) { s.p += s.s; g.globalAlpha = .35 + .65 * Math.abs(Math.sin(s.p)); g.beginPath(); g.arc(s.x, s.y, s.r, 0, 6.283); g.fill(); }
+  g.lineWidth = 2;
+  shots = shots.filter(m => m.l > 0);
+  for (const m of shots) {
+    g.globalAlpha = m.l / 40; g.strokeStyle = "#FFE9B8";
+    g.beginPath(); g.moveTo(m.x, m.y); g.lineTo(m.x + m.vx * 6, m.y + m.vy * 6); g.stroke();
+    m.x += m.vx; m.y += m.vy; m.l--;
+  }
+  if (!still) requestAnimationFrame(draw);
+}
+hero.addEventListener("click", e => {
+  if (e.target.closest("a,button")) return;
+  const r = c.getBoundingClientRect();
+  shots.push({x: e.clientX - r.left, y: e.clientY - r.top, vx: -9, vy: 5, l: 40});
+  if (still) draw();
+});
+addEventListener("resize", size);
+size(); draw();
+</script>
+</body>
+</html>
